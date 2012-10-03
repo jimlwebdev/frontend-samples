@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+var list = ['a','b','c','d','e','f','g','h','i','j'];
+document.write(list.toString() + '<br/>');
+doit('pop');
+doit('shift');
+
+function doit(what){
+// window.list[what]();
+ list[what]();
+ document.write(list.toString() + '<br/>');
+}
+//http://www.northjersey.com/pigskin
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+<script type="text/javascript" src="http://www.themedicalbag.com/script/jquery171"></script>
+<style>
+</style>
+<script type="text/javascript">
+$(function(){
+
+ var month = new Date().getMonth();
+ //month = 11;
+ var year = new Date().getFullYear() * 100;
+ var startbefore = year + month;
+ var showme = '';
+
+ for(var loop=0;(loop++)<12;){
+  startbefore++;
+  if (startbefore - year == 13){
+   startbefore += 88;
+  }
+  showme += startbefore + ' , ';
+ }
+
+ $('#msg').html(showme);
+/*
+var thisObj =  {};
+thisObj['m']='j';
+
+var stuff =  $.parseJSON($('#json').html());
+$(stuff).each(function(){
+if(this.m == this.n)
+ alert(this.m + '=' + this.n);
+})
+var nothing;
+*/
+});
+</script>
+</head>
+<body>
+<div id="msg"></div>
+<br/>
+<div id="json">
+[
+{"m":"j","n":"j","a":"1","b":"2","c":"3"},{"m":"j","n":"f","d":"4","e":"5","f":"6"},{"m":"j","n":"m","g":"7","h":"8","i":"9"},
+{"m":"f","n":"j","a":"1","b":"2","c":"3"},{"m":"f","n":"f","d":"4","e":"5","f":"6"},{"m":"f","n":"m","g":"7","h":"8","i":"9"},
+{"m":"m","n":"j","a":"1","b":"2","c":"3"},{"m":"m","n":"f","d":"4","e":"5","f":"6"},{"m":"m","n":"m","g":"7","h":"8","i":"9"}
+]
+</div>
+</body>
+</html>
+<!--
+<div id="json">{
+"j":[{"a":"1","b":"2","c":"3"},{"d":"4","e":"5","f":"6"},{"g":"7","h":"8","i":"9"}],
+"f":[{"a":"1","b":"2","c":"3"},{"d":"4","e":"5","f":"6"},{"g":"7","h":"8","i":"9"}],
+"m":[{"a":"1","b":"2","c":"3"},{"d":"4","e":"5","f":"6"},{"g":"7","h":"8","i":"9"}]
+}</div>
+
+blog.rss.calendar = {
+'january': [
+{'days':'1 - 28','headline':'National ITP Awareness Month','title':'Platelet Disorder Support Association','addr1':'133 Rollins Avenue, Suite 500','addr2':'','city-state-zip':'Rockville, MD 20852','phone1':'(877) 528-3538','phone2':'(301) 770-6636','emailaddr':'pdsa@pdsa.org','url':'www.pdsa.org/resources/itp-awareness-month.html'},
+{'days':'2','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'3','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'}
+],
+'february': [
+{'days':'4','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'5','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'6','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'}
+],
+'march': [
+{'days':'7','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'8','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'9','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'}
+],
+'april': [
+{'days':'10','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'11','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'},
+{'days':'12','headline':'Natl Zit day','title':'acne','addr1':'12345 lanidex','addr2':'basement','city-state-zip':'parsippany, nj 07054','phone1':'201-555-1212','phone2':'201-555-1212','emailaddr':'ugly@pimple.com','url':'http://www.pimple.com'}
+],
+'may': [],
+'june': [],
+'july': [],
+'august': [],
+'september': [],
+'october': [],
+'november': [],
+'december': []
+};
+-->

@@ -1,0 +1,1717 @@
+
+<!DOCTYPE html> 
+<html> 	
+    <head> 
+<base href="http://s2a.dcadev.com:8180/mdetails/trz-603/images/"/>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
+        <meta name="format-detection" content="telephone=no">
+        <title>Travatan Z Lowering and sustaining IOP control</title> 
+
+        <link rel="icon" href="http://www.groupdca.com/favicon.ico" /> 
+        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/244ccbc4-1b44-419b-ba1f-f716ba3097a9.css"/>
+
+        <link rel="stylesheet" href="http://s2a.dcadev.com:8180/mdetails/trz-603/css/clearfix.css"/>
+        <link rel="stylesheet" href="http://s2a.dcadev.com:8180/mdetails/trz-603/css/jquery.mobile-1.0b1.min.css"/>
+        <link rel="stylesheet" href="http://s2a.dcadev.com:8180/mdetails/trz-603/css/dcalib_src.css"/>
+
+        <link rel="stylesheet" href="http://s2a.dcadev.com:8180/mdetails/trz-603/css/styles.css"/>
+
+        <script type="text/javascript" src="http://fast.fonts.com/jsapi/5024c431-9d1e-45ff-98a7-7fd880f2317c.js"></script>
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/greensock/TweenMax.min.js"> </script>
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/jquery-1.6.1.min.js"> </script>
+
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/jquery.simplemodal.1.4.2.min.js"> </script>
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/deviceController.js"> </script>
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/jquery.mobile-1.1.1/jquery.mobile-1.0.1.min.js"> </script>
+
+        <script type="text/javascript"  id="dcalib" src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/dcalib_src.js?type=mdetail"> </script>
+        <script type="text/javascript"  src="http://s2a.dcadev.com:8180/mdetails/trz-603/js/darkSide.js"> </script>
+        <script type="text/javascript">
+            // detect device rotation/////
+            var supportsOrientationChange = "onorientationchange" in window,
+            orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+            window.addEventListener(orientationEvent, function() {
+			
+			
+                //detect os///
+                var deviceAgent = navigator.userAgent.toLowerCase();
+                $iOS = deviceAgent.match(/(iphone|ipod|ipad)/);
+				
+                //sets ortentation value///
+                var orientation = window.orientation;
+				
+                //moves browser to hide url bar//
+                window.scrollTo(0, 1);
+				
+                if ( orientation == 90 || orientation == -90){
+                    if ($iOS) {
+                        $('body').toggleClass('rotter', true);
+                    } else {
+                        $('body').toggleClass('rotter2', true);
+                    }
+                    $('#stage').toggleClass('hider', true);
+                    $('.page').toggleClass('hider', true);
+                    $('#footer').toggleClass('hider', true);
+					$('#nav').toggleClass('hider', true);
+					$('#popup-close-button').toggleClass('hider', true);
+                } else {
+                    if ($iOS) {
+                        $('body').toggleClass('rotter', false);
+                    } else {
+                        $('body').toggleClass('rotter2', false);
+                    }
+                    $('#stage').toggleClass('hider', false);
+                    $('.page').toggleClass('hider', false);
+                    $('#footer').toggleClass('hider', false);
+					$('#nav').toggleClass('hider', false);
+					$('#popup-close-button').toggleClass('hider', false);
+                }
+            }, false);
+			
+            var interactionInit = function()
+            {
+                // list of pages in order.
+                dcalib.pageList = ['page1','page2','page3','page4','page5','page6','page7','page8','page9','page15','page10','page16','page11','page12','page13', 'page14'];
+
+                // should be replaced with something like: http://edetails.groupdca.com/interaction
+                dcalib.service_uri = 'http://s2a.dcadev.com:8180/interaction'; 
+			
+                // should be something like: http://edetails.gdetail.com/prod_additions/flexergesic/2011/
+                dcalib.external_files_uri = 'http://s2a.dcadev.com:8180/mdetails/trz-603';
+
+                // information about this interaction. This should never change for this interaction.
+                dcalib.session_id = 'JDqRpuGggrRqp';
+                dcalib.project_id = 'TRZ-603M';
+                dcalib.group_id   = '1752';
+                ///TABS			
+                $(this).ready(function(){
+		
+                    function rockClick (name){
+                        $("#b10").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/' + name + '.png');
+                        $("#ch1").toggleClass('imgSelectedch1', false);
+                        $("#ch2").toggleClass('imgSelectedch2', false);
+                        $("#ch3").toggleClass('imgSelectedch3', false);
+                        $("#ch1").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/week2off.png');
+                        $("#ch2").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/week6off.png');
+                        $("#ch3").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/month3off.png');
+				
+                        $("#" + name).attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/none.png');
+                        $("#" + name).toggleClass('imgSelected'+ name, true);
+                    }
+				
+                    $("#b10").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/ch1.png');
+				
+                    $("#ch1").toggleClass('imgSelectedch1', true);
+				
+                    $("#ch2").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/week6off.png');
+                    $("#ch3").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/month3off.png');
+				
+                    $(".tab").click( function() { rockClick($(this).attr('id')); } );
+				
+                    function rockClick2 (name){
+                        $("#b11").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/' + name + '.png');
+                        $("#ch4").toggleClass('imgSelectedch4', false);
+                        $("#ch5").toggleClass('imgSelectedch5', false);
+					
+                        $("#ch4").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/week2off2.png');
+                        $("#ch5").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/month3off2.png');
+				
+                        $("#" + name).attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/none.png');
+                        $("#" + name).toggleClass('imgSelected'+ name, true);
+                    }
+				
+                    $("#b11").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/ch4.png');
+				
+                    $("#ch4").toggleClass('imgSelectedch4', true);
+				
+                    $("#ch5").attr("src",'http://s2a.dcadev.com:8180/mdetails/trz-603/images/month3off2.png');
+				
+				
+                    $(".tab2").click( function() { rockClick2($(this).attr('id')); } );
+                });
+                ///TABS	END
+                // ---------------------------- NAVBAR FOR DEBUG MODE ----------------------------
+                // to add staging please uncomment following condition and block local and dev condition
+                //if(dcalib.service_uri == 'demo' || dcalib.service_uri == 'http://s2a.dcadev.com:8180/interaction' || dcalib.service_uri == 'http://edetailsstage.groupdca.com/interaction')
+                if(dcalib.service_uri == 'ndemo' || dcalib.service_uri == 'http://s2a.dcadev.com:8180/interaction') // local and dev condition
+                {	
+                    var str='';
+                    $(document).ready(function(){
+                        $('.page').each(function(index,event) {
+                            str = str+'<input type="button" class="navPage" value="'+$(this).attr('id')+'" />';
+                        });
+                        $('body').append("<div class='showNavBar' title='For debug mode' style='width:100px; cursor:pointer; position:absolute; height:25px; top:0px; left:0; color:white; background:black; z-index:10000;'>Show Navbar</div>");
+                        var navBarDivStart = "<div class='navbar' style='width:320px; position:absolute; top:25px; left:0; color:white; background:black; z-index:10000;'>";
+                        var navBarContent = str;
+                        var navBarDivEnd = "</div>";
+                        var finalNavBar = navBarDivStart + navBarContent + navBarDivEnd;
+                        $("body").append(finalNavBar); // Populate navbar
+                        $('.navbar').hide();	// Hide navbar on load
+					
+                        // Click show the navbar
+                        $('.showNavBar').bind('click',function(){ // event can be changed to 'click'
+                            $('.navbar').slideToggle('slow');
+                        });
+					
+                        // Change page when clicked on any page number
+                        $('.navPage').bind('click',function(){ // event can be changed to 'click'
+                            dcalib.changePage($(this).val());
+                        });
+                    });
+                }
+                $('#next-button2').tap(function(event){
+                    //dcalib.changePage("page3");
+                    dcalib.nextPage();
+					event.stopPropagation();
+                });
+                $('#next-button3').tap(function(){
+                    //dcalib.changePage("page3");
+                    dcalib.nextPage();
+                });
+                $('#legal-popup-button1').css("cursor","pointer");
+                $('#legal-popup-button1').tap(function(){
+                    if(dcalib.activePageName != "pp-pop")
+                        oldpage = dcalib.activePageName;
+				
+                    setTimeout(function(){
+                        //dcalib.changePage("pp-pop");
+                        $("#nav").hide();
+                        $.mobile.changePage("#pp-pop", { transition: "none"});
+                        $('body').addClass('popup-show');
+					
+                    },500);
+                });
+                $('#legal-popup-button2').css("cursor","pointer");
+                $('#legal-popup-button2').tap(function(){
+                    if(dcalib.activePageName != "ref-pop")
+                        oldpage = dcalib.activePageName;
+				
+                    setTimeout(function(){
+                        //dcalib.changePage("ref-pop");
+                        $("#nav").hide();
+                        $.mobile.changePage("#ref-pop", { transition: "none"});
+                        $('body').addClass('popup-show');
+					
+                    },500);
+                });
+                /*$('#legal-popup-button3').css("cursor","pointer");
+                                $('#legal-popup-button3').tap(function(){
+                                        if(dcalib.activePageName != "pi-pop")
+                                                oldpage = dcalib.activePageName;
+				
+                                        setTimeout(function(){
+                                                //dcalib.changePage("pi-pop");
+                                                $.mobile.changePage("#pi-pop", { transition: "slideup"});
+                                                $('body').addClass('popup-show');
+                                                $("#nav").hide();
+                                        },500);
+                                });*/
+			
+                $('#popup-close-button').tap(function(){
+                    setTimeout(function(){
+                        //dcalib.changePage(oldpage);
+                        $.mobile.changePage("#"+oldpage, { transition: "none"});
+                        setTimeout(function(){
+                            $('body').removeClass('popup-show');
+                            $("#nav").show();
+                        },400);
+                    },200);
+				
+                });
+			
+                // function that's fired whenever we transition between pages.
+                // used for validation and stuff
+			
+                dcalib.onPageChange = function()
+                {
+                    if( dcalib.activePageName == 'page2' ||  dcalib.activePageName == 'page3')
+                    {
+                        /*$('#pp-tab').toggleClass('hidden', false);*/
+                        //$('#back-button').toggleClass('hidden', true);
+                        $('#back-button').hide();
+                    }
+                    else
+                    {
+                        /*$('#pp-tab').toggleClass('hidden', true);	*/
+                        //$('#back-button').toggleClass('hidden', false);
+                        $('#back-button').show();						
+                    }
+					
+					
+                    if( dcalib.activePageName == 'page14' )
+                    {
+                        /*						$('#next-button').toggleClass('hidden', true);
+                                                        $('#back-button').toggleClass('hidden', true);*/
+                        $('#next-button').hide();
+                        $('#back-button').hide();
+                        dcalib.saveData( 14, 0, false, true );
+                    }
+                    else
+                    {
+                        $('#next-button').toggleClass('hidden', false);					
+                    }
+			
+                    if( dcalib.activePageName == 'page1' ||dcalib.activePageName == 'page2' )
+                    {
+                        $('#footer').toggleClass('hidden', true);
+                        //$('#footer').hide();
+						
+                    }
+                    else
+                    {
+                        $('#footer').toggleClass('hidden', false);					
+                        //$('#footer').show();
+                    }
+					
+                    if( dcalib.activePageName == 'page4' ||dcalib.activePageName == 'page5' ||dcalib.activePageName == 'page6' ||dcalib.activePageName == 'page7' ||dcalib.activePageName == 'page8' ||dcalib.activePageName == 'page9' ||dcalib.activePageName == 'page15'  ||dcalib.activePageName == 'page10' ||dcalib.activePageName == 'page16' ||dcalib.activePageName == 'page11' ||dcalib.activePageName == 'page12' ||dcalib.activePageName == 'page13' ||dcalib.activePageName == 'page14')
+                    {
+                        $('#pp-tab').toggleClass('hidden', true);
+						
+                    }
+                    else
+                    {
+                        $('#pp-tab').toggleClass('hidden', false);					
+                    }
+			
+                    switch( dcalib.activePageName )
+                    {
+						
+                        case 'page2':
+                            $('#nav').hide();
+                            break;
+                        case 'page3':
+                            $('#nav').show();
+                            break;
+                        case 'page7':
+                            break;
+                        case 'page8':
+                            break;
+                        case 'page12':
+                            dcalib.getPageQuestions = function() {	return dcalib.getAnswers('page12'); }
+                            dcalib.skipPage = function(){
+                                if (dcalib.getAnswer('F12H1000Q1') == 0){
+                                    dcalib.pageList.splice(14,1);
+                                }
+                            }
+                            break;
+                        case 'page13':
+                            dcalib.getPageQuestions = function() {	return dcalib.getAnswers('page13'); }
+                            break;
+                        case 'page14':
+                            if (dcalib.getAnswer('F13H1000Q5').toUpperCase() == 'MN'){
+                                dcalib.setAnswerRPC('F12H1000Q1',0,function(){});
+                            } else if(dcalib.getAnswer('F12H1000Q1') == 3){
+                                dcalib.epocratesRPC(function(){});
+                            }
+                            dcalib.saveData( 14, 0, false, true ); // To mark interaction complete
+                            dcalib.grabParamsRPC(function(data){
+								$('#urlID').attr('href', "http://www.iopresourcecenter.com/mdetail?pac=" + $(data).find('practitioner_campaign_code').text() + "&pid="+$(data).find('practitioner_id').text() + "&src=elo");
+							});
+                            break;
+                    }
+                }
+		
+
+                if(navigator.platform == 'iPad') 
+                {
+                    $('video').prop('controls', true);
+                }
+            }
+
+            function switchTab( tabName )
+            {
+                $('#tab-state').removeClass();
+                $('#tab-state').addClass( tabName );
+                var position = $(".ui-page-active .ui-header").position();
+                $.mobile.silentScroll(0);
+            }	
+			
+			function updateHref(data){
+				$userData_rpc = $( data );
+				$('#urlID')[0].href = "http://www.iopresourcecenter.com/mdetail?pac=" +	$userData_rpc.find( 'practitioner_campaign_code' ).text() + "&pid="+$userData_rpc.find('practitioner_id').text() + "&src=elo";
+			}
+			
+        </script>
+<style>
+.footer { z-index: 10; position: fixed; bottom: 0; width: 100%; height: 5em; }
+			.ios .footer { position: absolute; }
+			
+		
+			.nav { background-image: url("../images/nav_bg.png");background-position: center bottom;background-size: auto 100%; bottom: 0;height: 5em;position: fixed;z-index: 6; width:100%;}
+				.nav .next-button, .nav .back-button { display: block; height: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center; padding-left: 15px;}
+				.back-button, .next-button { width: 3em } 
+				.back-button { float: left;  background-image: url(../images/back_button_bg.png);}
+				.next-button { float: right; background-image: url(../images/next_button_bg.png);}
+			
+					
+			.navDiv{ display:inline; height:5em; left:20%; right:20%; position:absolute; width:14em; margin:0 auto;} 
+				.legal-popup-button1 { background-image: url(../images/legal_pop_button_bg1.png); width:50px; float:left; display: block; height: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center; padding-left: 15px; }
+				.legal-popup-button2 { background-image: url(../images/legal_pop_button_bg2.png); width:50px; float:left; display: block; height: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center; padding-left: 15px;}
+				.legal-popup-button3 { background-image: url(../images/legal_pop_button_bg3.png); width:50px; float:left; display: block; height: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center; padding-left: 15px;}
+				.legal-pop p a { color: #492574;}
+				.popup-close-button { margin: 0 auto; display: block; width: 100%; background-color: #8ec830; display:none;  }
+				body.popup-show .nav { display: none; }
+				body.popup-show .popup-close-button { display: block; text-align: center;line-height: 4em;text-decoration: none;font-weight: bold; color: #fff;margin: 0;padding: 0;/*position: absolute; bottom: 0;left: 0;*/bottom: 0;position: fixed;-webkit-box-shadow: 0px 2px 5px 5px #777; -moz-box-shadow: 0px 2px 5px 5px #777;box-shadow: 0px 2px 5px 5px #777;}
+				
+			
+				.back-button.hidden { background-image: url(../images/back_button_off.png);}
+				.next-button.hidden { background-image: url(../images/next_button_off.png);}
+</style>
+    </head> 
+    <body> 
+
+        <div id="stage">
+            <div data-role="page" id="page1" class="page">
+                <div class="wrapper">
+                    <strong>Loading...</strong>
+                </div>
+            </div>
+
+            <div data-role="page" id="page2" class="page" >
+                <div class="wrapper" style="height:456px">
+                    <div style="width:90%; margin:15px;" id="img1">
+                        <img  src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/title.png" class="img-wrapper" alt="" width="100%"/>
+                        <h2>Jerry’s day will change, but his IOP<br/> control doesn’t have to.</h2>
+                    </div>
+                    <div style="height:90px; margin:200px 0 0 9px; text-align:center;" id="test">
+                        <a id="next-button2" href="#"><img src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/Enter.png" class="img-wrapper" alt="" width="100px"/></a>
+                    </div>
+                    <div id="act" style="margin-left: 100px;"><h2>(Actor portrayal)</h2></div>
+                </div>	
+                <script type="text/javascript">
+                    //alert("tween finished");
+				
+					
+                    $("#page2").live('pageinit',function() {
+                        //alert("happening?");
+                        var img1 = document.getElementById('img1');
+                        var act = document.getElementById('act');
+                        var next = document.getElementById('test');
+                        var next2 = document.getElementById('test2');
+                        var tl = new TimelineMax();
+						
+                        tl.timeScale(allTweenTimeScale);					
+					
+                        tl.appendMultiple([
+					
+                            TweenMax.from(img1,1, {css:{marginTop:100,autoAlpha:0}})
+                        ],
+                        3, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+						
+                        tl.appendMultiple([
+                            TweenMax.from(act,0.5, {css:{scaleY:0,transformOrigin:"top center", autoAlpha:0}}),
+                            TweenMax.from(next,0.5, {css:{autoAlpha:0, rotation:360}})
+                        ],
+                        1, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+					
+                        tl.appendMultiple([
+                            TweenMax.to(next, .75, {css:{scale:0.9}, repeat:2, yoyo:true})
+                        ],
+                        1, // delay
+                        "TweenAlign.START",
+                        1.5);// stagger
+                    });
+				
+                </script>
+
+            </div>
+
+
+
+
+
+            <div data-role="page" id="page3" class="page">
+                <div class="wrapper" id="p3wrapper">
+                    <p>Alcon Laboratories, Inc. owns the copyright to the content in this session. Graphic Details owns the proprietary software in this session. No materials can be reproduced from this session without their express written consent.<br/><br/>
+
+                        <a href="http://www.themedicalbag.com/privacy-policy" target="_blank"><span><u>Review the Graphic Details Privacy Policy.</span></u></a><br/><br/>
+
+                        Please keep in mind, while aggregate data from promotional sessions may be shared with Alcon, your name and specific responses will never be released without your permission.<br/><br/>
+
+                        <a href="http://www.alcon.com/en/privacy-policy.aspx" target="_blank"><span><u>Review the Alcon Privacy Policy.</span></u></a><br/><br/></p>
+                </div>
+
+                <script type="text/javascript">
+                    $("#page3").live('pageinit',function() {
+                        //alert("happening?");
+                        var page3 = document.getElementById('p3wrapper');
+				
+                        var tl = new TimelineMax();
+						
+                        tl.timeScale(allTweenTimeScale);					
+					
+                        tl.appendMultiple([
+                            TweenMax.from(page3,1, {css:{marginTop:100,autoAlpha:0},delay:1})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+					
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+
+            <div data-role="page" id="page4" class="page">
+                <a href="#" style="height:1px, width:1px;"></a>
+                <div class="wrapper" id="wrapper4">
+                    <p><span>INDICATIONS AND USAGE:</span><br/> 
+                        TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                        <span>Dosage and Administration:</span> <br/>
+                        One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                        <span>IMPORTANT SAFETY INFORMATION <br/>
+                            Warnings and Precautions:</span> <br/>
+                        <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                        <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                        Usually reversible.<br/><br/>
+
+                        <span>Adverse Reactions:</span> <br/>
+                        Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                        <span>Use In Specific Populations:</span> <br/>
+                        Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                        <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                </div>
+                <script type="text/javascript">
+                    $("#page4").live('pageinit',function() {
+                        //alert("happening?");
+                        var page4 = document.getElementById('wrapper4');
+				
+                        var tl = new TimelineMax();
+						
+                        tl.timeScale(allTweenTimeScale);					
+					
+                        tl.appendMultiple([
+                            TweenMax.from(page4,1, {css:{marginTop:100,autoAlpha:0},delay:1})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+					
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+
+            <div data-role="page" id="page5" class="page">
+                <div class="wrapper" id="page5wrapper">
+                    <p id="touch"><a id="jump5"><u><span>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header5">
+                        <h1>This interactive session should take approximately <span>4 minutes</span> of your time.</h1><br/>
+                        <h1><span>At the end of your session, you<br/>may be eligible to order*:</span></h1><br/>
+                    </div>
+                    <div>
+                        <ul style="list-style-type:none;">
+                            <img  id="arrow1" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/arrow.png" class="img-wrapper" alt="" width="7px" style="float:left; margin-top:3px;"/>
+                            <li id="list5"> &nbsp;&nbsp;A 3-month Epocrates<sup>&dagger;</sup> subscription</li><br/>
+                            <img    id="arrow2" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/arrow.png" class="img-wrapper" alt="" width="7px" style="float:left; margin-top:3px;"/>
+                            <li id="list5a"><div style="margin-left:15px">TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% patient education materials and savings cards</div>  </li><br/>
+                            <img    id="arrow3" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/arrow.png" class="img-wrapper" alt="" width="7px" style="float:left;  margin-top:3px;"/>
+                            <li id="list5b"><div style="margin-left:15px">An open-angle glaucoma educational poster</div></li><br/>
+                        </ul>
+                    </div>
+                    <div id="foot5">
+                        <p>*</p><div style="margin-left:6px; margin-top:-25px;"><p>As part of Alcon’s commitment to complying with relevant state law requirements, we regret that we cannot provide educational tools for healthcare professionals in Minnesota. </p></div>
+                    </div>
+                    <div id="isi5">	
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p>
+
+                        <p><sup>&dagger;</sup> Trademark is property of its owner.</p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom5">&nbsp;</a>
+                </div>
+                <script type="text/javascript">
+                    $("#page5").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch = document.getElementById('touch');
+                        var header5 = document.getElementById('header5');
+                        var arrow1 = document.getElementById('arrow1');
+                        var arrow2 = document.getElementById('arrow2');
+                        var arrow3 = document.getElementById('arrow3');
+                        var list5 = document.getElementById('list5');
+                        var list5a = document.getElementById('list5a');
+                        var list5b = document.getElementById('list5b');
+                        var foot5 = document.getElementById('foot5');
+                        var isi5 = document.getElementById('isi5');
+					
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            TweenMax.from(touch,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header5,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(arrow1,1, {css:{marginLeft:-15,autoAlpha:0}}),
+                            TweenMax.from(list5,1, {css:{autoAlpha:0}}),
+                            TweenMax.from(arrow2,1, {css:{marginLeft:-15,autoAlpha:0}}),
+                            TweenMax.from(list5a,1, {css:{autoAlpha:0}}),
+                            TweenMax.from(arrow3,1, {css:{marginLeft:-15,autoAlpha:0}}),
+                            TweenMax.from(list5b,1, {css:{autoAlpha:0}}),
+                            TweenMax.from(foot5,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(isi5,1, {css:{marginTop:500,autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+						
+                    });
+                    $(document).ready(function (){
+					
+                        $("#jump5").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi5").offset().top
+                            }, 1000);
+                            //});
+                        });
+						
+                        $("#jump6").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi6").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump7").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi7").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump8").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi8").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump9").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi9").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump9a").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi9a").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump10").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi10").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump10a").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi10a").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump11").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi11").offset().top
+                            }, 1000);
+                            //});
+                        });
+                        $("#jump12").click(function (){
+                            //$(this).animate(function(){
+                            $('html, body').animate({
+                                scrollTop: $("#isi12").offset().top
+                            }, 1000);
+                            //});
+                        });
+					
+                    });
+					
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>		
+
+            <div data-role="page" id="page6" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch2"><a id="jump6"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+
+                    <img  id="img6" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/man1.png" class="img-wrapper" alt="" width="110px" style="float:right;  margin-top:3px; margin-right:10px;"/>
+
+                    <div id="header6" style="width:60%; float:left;"><h1>For your patients<br/>with open-angle<br/>glaucoma, keep<br/>in mind it is a<br/>24-hour disease</h1></div>
+                    <div class="dashes" align="left" id="dashes6"></div>
+                    <div id="copy6" style="width:70%; float:left; margin-top:15px;"><p>24-hour IOP-lowering efficacy is critical when selecting medical treatment for open-angle glaucoma.</p></div>
+                    <img id="image6b" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/24th.png" class="img-wrapper" alt="" width="81px" style="float:right;  margin-top:3px; margin-right:10px;"/>
+
+                    <div id="copy6b" style="float:left;"><p>BAK-free TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog with demonstrated efficacy, lowering IOP by 30% and sustaining it for up to a full day.<sup>1,2</sup></p> </div>
+                    <div style="float:left;" id="isi6">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom6">&nbsp;</a>
+                </div>
+                <script type="text/javascript">
+                    $("#page6").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch2 = $('#touch2');
+                        var img6 = document.getElementById('img6');
+                        var header6 = document.getElementById('header6');
+                        var dashes6 = document.getElementById('dashes6');
+                        var copy6 = document.getElementById('copy6');
+                        var image6b = document.getElementById('image6b');
+                        var copy6b = document.getElementById('copy6b');
+                        var isi6 = document.getElementById('isi6');
+					
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch2,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header6,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(img6,1, {css:{marginRight:-100,autoAlpha:0}}),
+                            TweenMax.from(dashes6,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(copy6,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(image6b,1, {css:{autoAlpha:0,rotation:-360}}),
+                            TweenMax.from(copy6b,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(isi6,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+
+
+            <div data-role="page" id="page7" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch3"><a id="jump7"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+
+                    <img id="img7" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/eye.png" class="img-wrapper" alt="" width="157px" style="float:right; margin-right:8px;"/>
+
+                    <div style="width:48%; float:left;margin-top:10px;" id="header7"><h1>Each office<br/>visit is just a <br/>snapshot of a <br/>patient’s IOP</h1></div>
+
+                    <div class="dashes" align="left" id="dashes7"></div>
+
+                    <div id="copy7"><p>IOP is generally assessed with a single measurement during daytime office hours. However, a single measurement may not accurately represent IOP over the course of a full day.<sup>3-6</sup></p></div>
+
+
+                    <div style="float:left;" id="copy7b"><p>A single measurement may miss IOP spikes, peaks, or elevated pressure levels that occur at other time points.<sup>3-6</sup></p> </div>
+                    <div id="isi7" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom7"></a>
+                </div>
+                <script type="text/javascript">
+                    $("#page7").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch3 = $('#touch3');
+                        var img7 = document.getElementById('img7');
+                        var header7 = document.getElementById('header7');
+                        var dashes7 = document.getElementById('dashes7');
+                        var copy7 = document.getElementById('copy7');
+                        var copy7b = document.getElementById('copy7b');
+                        var isi7 = document.getElementById('isi7');
+					
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch3,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header7,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(img7,1, {css:{marginRight:-100,autoAlpha:0}}),
+                            TweenMax.from(dashes7,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(copy7,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(copy7b,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(isi7,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+
+
+            <div data-role="page" id="page8" class="page">
+                <div class="wrapper" id="whole">
+
+                    <p id="touch8"><a id="jump8"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+
+                    <div id="header8"><h1>BAK-free <span style="color:#c1fe5e">TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004%</span> has been proven to complete 2 steps for managing IOP</h1></div>
+
+                    <div id="dashes8" class="dashes" align="left"></div>
+                    <div>
+                        <div id="copy8">
+                            <img id="" src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/one.png" class="img-wrapper" alt="" width="42px" style="float:left;"/>
+                            <div> <p id="" style="padding-top: 10px; font-weight: bold; font-size: 1.2em;">LOWER IOP BY 30%<sup>1</sup></p></div><br/>
+                        </div>
+                        <div id="copy8b">
+                            <img src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/two.png" class="img-wrapper" alt="" width="42px" style="float:left; "/>
+                            <div style="margin-left:15px; margin-top:32px"><p  style="margin-top: -22px; font-weight: bold; font-size: 1.2em;">SUSTAIN IT UP TO A FULL DAY<sup>1,2</sup></p></div><br/>
+                        </div>
+                    </div>
+                    <div id="isi8" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom8"></a>
+                </div>	
+                <script type="text/javascript">
+                    $("#page8").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch8 = $('#touch8');
+                        var header8 = document.getElementById('header8');
+                        var dashes8 = document.getElementById('dashes8');
+                        var copy8 = document.getElementById('copy8');
+                        var copy8b = document.getElementById('copy8b');
+                        var isi8 = document.getElementById('isi8');
+					
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch8,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header8,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(dashes8,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(copy8,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(copy8b,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(isi8,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+            <div data-role="page" id="page9" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch9" ><a id="jump9"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header9"><h1>In a double-masked, randomized study published in the <i>Journal of Glaucoma</i>, BAK-free <span style="color:#c1fe5e">TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004%</span> maintained a 30% IOP lowering from baseline<sup>1</sup></h1></div>
+                    <div id="dashes9" class="dashes" align="left"></div>
+
+                    <!-- the tabs -->
+                    <div id="charter9">
+                        <img id="b10" class="largeIMG" ></img>
+                        <div class="charts">
+                            <img id="ch1" class="tab"></img>
+                            <img id="ch2" class="tab"></img>
+                            <img id="ch3" class="tab"></img>
+                        </div>
+                    </div>
+                    <!-- END TABS -->	
+                    <div class="notes9"> <p>Baseline mean IOP, mm Hg (95% CI): 12 hours post, 27.0 (0.2, -0.6), N=322; 14 hours post, 25.5 (0.3, -0.6), N=322; 20 hours post, 24.8 (0.3, -0.5), N=322.</p>
+                        <p>Week 2 mean IOP, mm Hg (95% CI): 12 hours post, 18.5 (0.4, -0.5), N=320; 14 hours post, 17.7 (0.4, -0.6), N=320; 20 hours post, 17.3 (0.4, -0.6), N=319.</p>
+                        <p>Week 6 mean IOP, mm Hg (95% CI): 12 hours post, 18.7 (0.6, -0.4), N=313; 14 hours post, 17.8 (0.5, -0.5), N=313; 20 hours post, 17.3 (0.5, -0.5), N=309.</p>
+                        <p>3 Months mean IOP, mm Hg (95% CI): 12 hours post, 18.7 (0.5, -0.4), N=309; 14 hours post, 17.7 (0.6, -0.4), N=308; 20 hours post, 17.4 (0.8, -0.2), N=310.</p></div>	
+
+                    <div id="dashes9b" class="dashes" align="left"></div>
+                    <div id="isi9" style="float:left;">
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom9"></a>
+                </div>
+                <script type="text/javascript">
+                    $("#page9").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch9 = $('#touch9');
+                        var header9 = $('#header9')
+                        var dashes9 = $('#dashes9')
+                        var charter9 = $('#charter9')
+                        var notes9 = $('#notes')
+                        var dashes9b = $('#dashes9b')
+                        var isi9 = $('#isi9')
+						
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch9,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header9,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(dashes9,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(charter9,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(notes9,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(dashes9b,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(isi9,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>	
+
+
+
+
+            <div data-role="page" id="page15" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch9a"><a id="jump9a"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+
+                    <div id="header9a"><h1>Adverse Events<sup>1</sup> ― Lewis, Katz, Weiss, et al</h1></div>	
+                    <div  id="header9ab"><h2>Most Frequent (>1%) Ocular Adverse Events Related to Therapy—Overall Safety Population</h2></div>
+                    <div id="img9a"><img  src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/chart_new.jpg" class="img-wrapper" alt="" width="306px" style="float: left;margin-left: 7px;margin-top: 15px;"/></div>
+                    <div id="isi9a" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom9a"></a>
+                </div>	
+                <script type="text/javascript">
+                    $("#page15").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch9a = $('#touch9a');
+                        var header9a = $('#header9a')
+                        var header9ab = $('#header9ab')
+                        var img9a = $('#img9a')
+                        var isi9a = $('#isi9a')
+						
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch9a,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header9a,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(header9ab,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(img9a,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(isi9a,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+            <div data-role="page" id="page10" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch10"><a id="jump10"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header10"><h1><span style="color:#c1fe5e">TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004%</span> sustained 30% IOP reductions in an integrated analysis of 7 randomized clinical trials with 1,563 patients<sup>7</sup></h1></div>
+                    <div id="dashes10" class="dashes" align="left"></div>
+                    <div id="header10b"><h2>An optimal goal may be to reduce IOP by at least <span>30%.</span><sup>8</sup></h2></div>
+
+                    <!-- the tabs -->
+                    <div id="charter10">
+                        <img id="b11" class="largeIMG2" ></img>
+                        <div class="charts2">
+                            <img id="ch4" class="tab2"></img>
+                            <img id="ch5" class="tab2"></img>
+                        </div>
+                    </div>
+
+                    <!-- END TABS -->	
+                    <div id="note10" style="padding-top:38px;"><p>The integrated analysis comprised data from 7 peer reviewed, published, prospective randomized trials, including the Lewis study. The 7 studies were selected based on shared characteristics. All but one were registration trials; the sole non-registration trial was a duration of action study conducted to registration trial standards.</p></div>
+
+                    <div id="isi10" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom10"></a>
+                </div>	
+                <script type="text/javascript">
+                    $("#page10").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch10 = $('#touch10');
+                        var header10 = $('#header10')
+                        var dashes10 = $('#dashes10')
+                        var header10b = $('#header10b')
+                        var charter10 = $('#charter10')
+                        var note10 = $('#note10')
+                        var isi10 = $('#isi10')
+						
+                        var tl = new TimelineMax();
+							
+                        tl.timeScale(allTweenTimeScale);					
+						
+                        tl.appendMultiple([
+                            //TweenMax.from(touch10,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header10,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(dashes10,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(header10b,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(charter10,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(note10,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(isi10,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+
+            <div data-role="page" id="page16" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch10a"><a id="jump10a"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header10a"><h1>Adverse Events<sup>7</sup>-Dubiner, Noecker</h1></div>	
+                    <div id="header10ab"><p>The discontinuation rate due to all adverse events was 3.2%. At a rate of 38.8%, the physician-graded hyperemia rate was similar to the rate reported in the TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% package insert. The rate of patient-reported hyperemia was 8.5%.<sup>7</sup></p></div>
+
+                    <div id="header10ac" style= "margin-left:10px;"><h3>Adverse events occurring at a rate of 1% or greater in the integratered analysis (n = 1669 subjects with safety data)</h3></div>
+
+                    <table id="table10a" border="0" bordercolor="#FFF" width="310px" cellpadding="0" cellspacing="1" align="left">
+                        <tr>
+                            <td colspan="2"><hr width="100%" align="left"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="right">n (%)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><hr width="100%" align="left"/></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Ocular hyperemia, physician-reported<br/>(n = 598/1669)</td>
+                            <td align="right">232<br/>(38.8)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Ocular hyperemia, subject-reported<br/>(n = 1071/1669)</td>
+                            <td align="right">91 (8.5)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Ocular pruritus</td>
+                            <td align="right">69 (4.1)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Ocular discomfort</td>
+                            <td align="right">51 (3.1)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Ocular pain</td>
+                            <td align="right">35 (2.1)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Dry eye</td>
+                            <td align="right">33 (2.0)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Foreign body sensation</td>
+                            <td align="right">33 (2.0)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Keratitis</td>
+                            <td align="right">23 (1.4)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><hr width="100%" align="left"/></td>
+                        </tr>
+
+                    </table>
+
+                    <div id="isi10a" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom10a"></a>
+                </div>
+                <script type="text/javascript">
+                    $("#page16").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch10a = $('#touch10a');
+                        var header10a = $('#header10a')
+                        var header10ab = $('#header10ab')
+                        var header10ac = $('#header10ac')
+                        var table10a = $('#table10a')
+                        var isi10a = $('#isi10a')
+							
+                        var tl = new TimelineMax();
+								
+                        tl.timeScale(allTweenTimeScale);					
+							
+                        tl.appendMultiple([
+                            //TweenMax.from(touch10a,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header10a,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(header10ab,1, {css:{marginTop:250,autoAlpha:0}}),
+                            TweenMax.from(header10ac,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(table10a,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(isi10a,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>	
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+            <div data-role="page" id="page11" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch11"><a id="jump11"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header11"><h1>FOR YOUR PATIENTS STARTING ON OR SWITCHING TO A NEW PGA
+                            <br/><br/>THINK <span style="color:#c1fe5e">30% SUSTAINED IOP LOWERING</span>,<br/>
+                            THINK BAK-FREE <span style="color:#c1fe5e">TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004%</span></h1></div><br/><br/>
+
+                    <div id="isi11" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span></p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom11"></a>
+                </div>	
+                <script type="text/javascript">
+                    $("#page11").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch11 = $('#touch11');
+                        var header11 = $('#header11')
+                        var isi11 = $('#isi11')
+								
+                        var tl = new TimelineMax();
+									
+                        tl.timeScale(allTweenTimeScale);					
+								
+                        tl.appendMultiple([
+                            //TweenMax.from(touch11,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header11,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(isi11,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>	
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+            <div data-role="page" id="page12" class="page">
+                <div class="wrapper" id="whole">
+                    <p id="touch12"><a id="jump12"><span><u>Touch</u></span></a> or scroll to view full Important Safety Information.</p>
+                    <div id="header12"><h1>Thank you, Doctor. Please select from the following educational tools for use in your practice.*</h1></div><br/><br/>
+                    <div class="q1" id="question1">
+                        <fieldset data-role="controlgroup" data-type="vertical">
+                            <input type="radio" data-required="no" name="F12H1000Q1" id="rb11" value="1" class="custom" />
+                            <label for="rb11"><div class="copy">rb11</div></label>
+                            <input type="radio" name="F12H1000Q1" id="rb12" value="2" class="custom" />
+                            <label for="rb12"><div class="copy">rb12</div></label>
+                            <input type="radio" name="F12H1000Q1" id="rb13" value="3" class="custom" />
+                            <label for="rb13"><div class="copy">rb13</div></label>
+                        </fieldset> 
+                    </div><!--end of q1-->	
+
+                    <div class="footnote" id="notes12">
+                        <p>*As part of Alcon’s commitment to complying with relevant state law requirements, we regret that we cannot provide educational tools for healthcare professionals in Minnesota. <br/></p></div>
+                    <div id="isi12" style="float:left;">
+
+                        <p><span>INDICATIONS AND USAGE:</span><br/> 
+                            TRAVATAN Z<sup>&reg;</sup> (travoprost ophthalmic solution) 0.004% is a prostaglandin analog indicated for the reduction of elevated intraocular pressure in patients with open-angle glaucoma or ocular hypertension.<br/><br/>  
+                            <span>Dosage and Administration:</span> <br/>
+                            One drop in the affected eye(s) once daily in the evening.<br/><br/>
+
+                            <span>IMPORTANT SAFETY INFORMATION <br/>
+                                Warnings and Precautions:</span> <br/>
+                            <i>Pigmentation:</i> Pigmentation of the iris, periorbital tissue (eyelid) and eyelashes can occur. Iris pigmentation likely to be permanent.<br/>
+                            <i>Eyelash Changes:</i> Gradual change to eyelashes including increased length, thickness and number of lashes. 
+                            Usually reversible.<br/><br/>
+
+                            <span>Adverse Reactions:</span> <br/>
+                            Most common adverse reaction (30% to 50%) is conjunctival hyperemia.<br/><br/>
+
+                            <span>Use In Specific Populations:</span> <br/>
+                            Use in pediatric patients below the age of 16 years is not recommended because of potential safety concerns related to increased pigmentation following long-term chronic use. <br/><br/>
+
+                            <span>For additional information about TRAVATAN Z<sup>&reg;</sup> Solution, please <a href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf" target="_blank">click here</a> for full prescribing information.</span>
+                            <br/>
+                            <sup>†</sup>Trademark is property of its owner.</p><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <a id="bottom12"></a>
+                </div>	
+                <script type="text/javascript">
+                    $("#page12").live('pageinit',function() {
+                        //alert("happening?");
+                        var touch12 = $('#touch12');
+                        var header12 = $('#header12')
+                        var question1 = $('#question1')
+                        var rb11 = $('#rb11')
+                        var rb12 = $('#rb12');
+                        var rb13 = $('#rb13')
+                        var notes12 = $('#notes12')
+                        var isi12 = $('#isi12');
+								
+                        var tl = new TimelineMax();
+									
+                        tl.timeScale(allTweenTimeScale);					
+								
+                        tl.appendMultiple([
+                            //TweenMax.from(touch12,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(header12,1, {css:{marginTop:200,autoAlpha:0}}),
+                            TweenMax.from(question1,1, {css:{marginTop:300,autoAlpha:0}}),
+									
+                            TweenMax.from(notes12,1, {css:{marginTop:400,autoAlpha:0}}),
+                            TweenMax.from(isi12,1, {css:{marginTop:500, autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>	
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+            <div data-role="page" id="page13" class="page">
+                <div class="wrapper" id="whole">
+                    <h1 id="header13">Please provide the following so that we may fulfill your requests:</h1>
+                    <div id="dashes13" class="dashes" align="left"></div>
+                    <div class="theForm">
+                        <div data-role="fieldcontain" id="fname13">
+                            <fieldset data-role="controlgroup" data-type="horizontal"  >
+                                <input data-required="yes" type="text" name="F13H1000Q1" id="fName" placeholder="First Name" data-error="First name is required" />
+                            </fieldset>
+                        </div>
+
+                        <div data-role="fieldcontain" id="lname13">
+                            <fieldset data-role="controlgroup" data-type="horizontal"  >
+                                <input data-required="yes" type="text" name="F13H1000Q2" id="lName" placeholder="Last Name" data-error="Last name is required"/>
+                            </fieldset>
+                        </div>	
+                        <div data-role="fieldcontain" id="streetAddress13">
+                            <fieldset data-role="controlgroup" data-type="horizontal" >
+                                <input  data-required="yes" type="text" name="F13H1000Q3" id="streetAddress" placeholder="Address" data-error="Address is required"  />
+                            </fieldset>
+                        </div>
+
+                        <div data-role="fieldcontain" id="city13">
+                            <fieldset data-role="controlgroup" data-type="horizontal"  >
+                                <input data-required="yes" type="text" name="F13H1000Q4" id="city" placeholder="City"  data-error="City is required"/>
+                            </fieldset>
+                        </div>	
+
+                        <div data-role="fieldcontain" id="state13">
+                            <input data-required="yes" type="text" name="F13H1000Q5" id="state" placeholder="State" data-error="State is required" maxlength="2" size="2"/>
+                        </div>
+
+                        <div data-role="fieldcontain" id="zip13">
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <input data-required="yes" type="text" name="F13H1000Q6" id="zip" placeholder="Zip code" data-error="Zip code is required" max="99999" min="0" pattern="[0-9]*"/>
+                            </fieldset>
+                        </div>	
+                        <fieldset data-role="controlgroup" style="margin-top: 26px; " id="not_panel">
+                            <input type="checkbox" data-required="yes" data-error="Please read and accept privacy policy" name="F13H1000Q7" id="checkbox-1" class="custom" />
+                            <label for="checkbox-1"></label>
+                        </fieldset>
+                        <p style="z-index:5;margin-left: 100px;margin-top: -50px;">I have read and agree to Alcon’s <a href="http://www.alcon.com/en/privacy-policy.aspx" target="_blank">Privacy Statement</a></p>
+                        <br/>
+                        <div id="submit13"></div>
+
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $("#page13").live('pageinit',function() {
+                        //alert("happening?");
+                        var header13 = $('#header13');
+                        var dashes13 = $('#dashes13')
+                        var fname13 = $('#fname13')
+                        var lname13 = $('#lname13')
+                        var streetAddress13 = $('#streetAddress13');
+                        var city13 = $('#city13')
+                        var state13 = $('#state13')
+                        var zip13 = $('#zip13')
+                        var not_panel = $('#not_panel');
+                        var submit13 = $('#submit13');
+                        var tl = new TimelineMax();
+                        tl.timeScale(allTweenTimeScale);
+                        tl.appendMultiple([
+                            TweenMax.from(header13,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(dashes13,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(fname13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(lname13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(streetAddress13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(city13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(state13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(zip13,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(not_panel,1, {css:{marginTop:400, autoAlpha:0}}),
+                            TweenMax.from(submit13,1, {css:{autoAlpha:0, rotation:360}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>
+        <div class="footer">
+            <div class="nav">
+                <a class="back-button" href="#"></a>
+                <div class="navDiv">
+                    <a class="legal-popup-button1" data-role="button"></a>
+                    <a class="legal-popup-button2" data-role="button"></a>
+                    <a class="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a class="next-button" href="#"></a>		
+            </div>
+            <div class="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a class="popup-close-button" href="#">CLOSE</a>
+        </div>
+            </div>
+
+
+            <div data-role="page" id="page14" class="page">
+                <div class="wrapper" style="height:500px;">
+                    <h1 id="header14">Thank you for participating in this<br/>interactive session.</h1>
+                    <div id="dashes14" class="dashes" align="left"></div>
+                    <div id="img14"><img  src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/trz_logo.png" class="img-wrapper" alt="" width="90%" style="margin-left:8%;"/></div>
+                    <div id="header14b"><h1>Want to learn more? <span style="font-weight:lighter;color=#fff">Visit the IOP<br/>Resource Center Web site:</span></h1></div>	
+                    <div id="img14b"><a id="urlID" href="http://www.iopresourcecenter.com/"><img  src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/IOP.png" class="img-wrapper" alt="" width="90%" style="margin-left:8%; margin-top:5px;"/></a></div>
+                    <div id="img14c"><img  src="http://s2a.dcadev.com:8180/mdetails/trz-603/images/bot.png" class="img-wrapper" alt="" width="90%" style="margin-left:8%; margin-top:5px;"/></div>
+                </div>
+                <script type="text/javascript">
+                    $("#page14").live('pageinit',function() {
+                        //alert("happening?");
+                        var header14 = $('#header14');
+                        var dashes14 = $('#dashes14');
+                        var img14 = $('#img14');
+                        var header14b = $('#header14b');
+                        var img14b = $('#img14b');
+                        var img14c = $('#img14c');
+									
+                        var tl = new TimelineMax();
+										
+                        tl.timeScale(allTweenTimeScale);					
+									
+                        tl.appendMultiple([
+                            TweenMax.from(header14,1, {css:{marginTop:100,autoAlpha:0}}),
+                            TweenMax.from(dashes14,1, {css:{autoAlpha:0, scaleX:0 }}),
+                            TweenMax.from(img14,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(header14b,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(img14b,1, {css:{marginTop:300,autoAlpha:0}}),
+                            TweenMax.from(img14c,1, {css:{marginTop:300,autoAlpha:0}})
+                        ],
+                        .5, // delay
+                        "TweenAlign.START",
+                        .5);// stagger
+                    });
+                </script>				
+            </div>
+
+
+            <div data-role="page" id="pp-pop" class="pi">
+                <div class="wrapperAll">
+                    <div id="tab-state" class="isi">
+                        <div data-role="content" class="wrapper">
+                            <p>Alcon Laboratories, Inc. owns the copyright to the content in this session. Graphic Details owns the proprietary software in this session. No materials can be reproduced from this session without their express written consent.<br/><br/>
+
+                                <a href="http://www.themedicalbag.com/privacy-policy" target="_blank"><span><u>Review the Graphic Details Privacy Policy.</span></u></a><br/><br/>
+
+                                Please keep in mind, while aggregate data from promotional sessions may be shared with Alcon, your name and specific responses will never be released without your permission.<br/><br/>
+
+                                <a href="http://www.alcon.com/en/privacy-policy.aspx" target="_blank"><span><u>Review the Alcon Privacy Policy.</span></u></a><br/><br/></p>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="page" id="ref-pop" class="pi">
+                <div class="wrapperAll">
+                    <div id="tab-state" class="isi">
+                        <div data-role="content" class="wrapper">
+                            <h2>References</h2><br/>
+                            <ol style="list-style-type:number;">
+                                <li>Lewis RA, Katz GJ, Weiss MJ, et al. Travoprost 0.004% with and without benzalkonium chloride: a comparison of safety and efficacy. <i>J Glaucoma</i>. 2007;16(1):98-103. </li>
+                                <li>Gross RL, Peace JH, Smith SE, et al. Duration of IOP reduction with travoprost BAK-free solution. <i>J Glaucoma</i>. 2008;17(3):217-222.</li>
+                                <li>Nakakura S, Nomura Y, Ataka S, Shiraki K. Relation between office intraocular pressure and 24-hour intraocular pressure in patients with primary open-angle glaucoma treated with a combination of topical antiglaucoma eye drops. <i>J Glaucoma</i>. 2007;16(2):201-204. </li>
+                                <li>Mosaed S, Liu JH, Weinreb RN. Correlation between office and peak nocturnal intraocular pressures in healthy subjects and glaucoma patients. <i>Am J Ophthalmol. </i>2005;139(2):320-324.</li>
+                                <li>Hughes E, Spry P, Diamond J. 24-hour monitoring of intraocular pressure in glaucoma management: a retrospective review.<i>J Glaucoma</i>. 2003;12(3):232-236.</li>
+                                <li>Liu JH, Zhang X, Kripke DF, Weinreb RN. Twenty-four-hour intraocular pressure pattern associated with early glaucomatous changes. <i>Invest Ophthalmol Vis Sci</i>. 2003;44(4):1586-1590.</li>
+                                <li>Dubiner HB, Noecker R. Sustained intraocular pressure reduction throughout the day with travoprost ophthalmic solution 0.004%. <i>Clin Ophthalmol</i>. 2012;6:525-531.</li>
+                                <li>Ehlers JP, Shah CP, eds. <i>The Wills Eye Manual: Office and Emergency Room Diagnosis and Treatment of Eye Disease.</i> 5th ed. Philadelphia, PA: Lippincott Williams & Wilkins; 2008:191-195.</li>
+                            </ol>
+                            <br /><br /><br /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>				
+
+            <div data-role="page" id="pi-pop" class="pi">
+                <div class="wrapperAll">
+                    <div id="tab-state" class="isi">
+                        <div data-role="content" class="wrapper">
+                            <h2>Prescribing Information</h2><br/><br />
+                            <p></p>
+                            <br /><br /><br /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+<!--
+        <div id="footer">
+            <div id="nav">
+                <a id="back-button" href="#"></a>
+                <div id="navDiv">
+                    <a id="legal-popup-button1" data-role="button"></a>
+                    <a id="legal-popup-button2" data-role="button"></a>
+                    <a id="legal-popup-button3" data-role="button"  target="_blank" href="http://ecatalog.alcon.com/pi/TravatanZ_US_en.pdf"></a>
+                </div>
+                <a id="next-button" href="#"></a>		
+            </div>
+            <div id="dir-box" class="hidden">
+                <p>Scroll to continue</p>
+            </div>
+            <a id="popup-close-button" href="#">CLOSE</a>
+        </div>
+-->
+
+
+    </body> 
+</html>

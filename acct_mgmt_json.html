@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>select json</title> 
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+var doctors = {
+'1':{'t':'a','u':[2,3,4]},
+'2':{'t':'b','u':[3,4,5]},
+'3':{'t':'c','u':[5,6,7]},
+'4':{'t':'d','u':[8,9,0]}
+};
+
+var other = {
+'0':'abc','1':'bcd','2':'cde','3':'def','4':'efg',
+'5':'fgh','6':'ghi','7':'hij','8':'ijk','9':'jkl'
+};
+
+$(function(){
+ var select;
+ $('#changeme').change(function(){
+  var what = this.value;
+  if(what > ''){
+   select = $('<select>');
+   var stuff = $.extend(true, {}, other);
+   $.each(doctors[what].u, function(index, value) { 
+     if(stuff[value]){
+      $(select).append($('<option>',{'value':value,'text':stuff[value]}));
+      delete stuff[value];
+     } 
+   });
+   $('#selectme').append(select);
+  }
+ });
+});
+</script>
+<style>
+</style>
+</head> 
+<body>
+<select id="changeme">
+<option></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+<div id="selectme"></div>
+</body>
+</html>
+<!--
+$(function(){
+ var select;
+ $('#changeme').change(function(){
+  select = $('<select>');
+  var stuff = $.extend(true, {}, other);
+  $.each(doctors, function(index, value) { 
+   $.each(value.u, function(index, value){
+    if(stuff[value]){
+     $(select).append($('<option>',{'value':value,'text':stuff[value]}));
+     delete stuff[value];
+    } 
+  });
+ });
+ $('#selectme').append(select);
+ });
+});
+-->

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Single page template</title> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script>
+var isi;
+
+$(function(){
+});
+
+ $( document ).live( "pagebeforehide", function( event, data ){
+  $('#' + event.target.id + ' .content-secondary .isi').html('');
+ });
+ $( document ).live( "pageinit", function( event, data ){
+//  $('#' + event.target.id + ' .content-secondary .isi').html($('#isi').html());
+ });
+ $( document ).live( "pagebeforeshow", function( event, data ){
+  $('#' + event.target.id + ' .content-secondary .isi').html($('#isi').html());
+ });
+</script>
+<style>
+div.content-primary{float:left;width:75%;}
+div.content-secondary{float:right;width:25%;}
+#isi{display:none;}
+</style>
+</head> 
+
+<body> 
+
+<div data-role="page" id="page1">
+ <div data-role="header">page1</div>
+ <div data-role="content" class="ui-content">
+  <div class="content-primary">
+<a href="#page2">page2</a>
+<a href="#page3">page3</a>
+  </div><!-- /content -->
+  <div class="content-secondary">
+   <div class="isi"></div>
+  </div>
+ </div>
+</div><!-- /page -->
+
+<div data-role="page" id="page2">
+ <div data-role="header">page2</div>
+ <div data-role="content" class="ui-content">
+  <div class="content-primary">
+<a href="#page1">page1</a>
+<a href="#page3">page3</a>
+  </div><!-- /content -->
+  <div class="content-secondary">
+   <div class="isi"></div>
+  </div>
+ </div>
+</div><!-- /page -->
+
+
+<div data-role="page" id="page3">
+ <div data-role="header">page3</div>
+ <div data-role="content" class="ui-content">
+  <div class="content-primary">
+<a href="#page1">page1</a>
+<a href="#page2">page2</a>
+  </div><!-- /content -->
+  <div class="content-secondary">
+   <div class="isi"></div>
+  </div>
+ </div>
+</div><!-- /page -->
+<div id="isi">isi isi isi isi isi isi isi isi isi isi</div>
+</body>
+</html>
