@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>offset</title> 
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+$(function(){
+/*
+var offset = $('#a').offset();
+alert("left: " + offset.left + ", top: " + offset.top + ", height: " + $('#a').height())
+*/
+});
+</script>
+<style>
+*{margin:auto;text-align:center;}
+div.fl{float:left;width:25px;height:25px;border:1px solid #ff0000;}
+.c{position:relative;}
+.stuck{position:absolute;top:33px;left:0px;border:1px solid #008000;}
+.black{color:#000000;}
+.blue{color:#0000FF;}
+.brown{color:#A52A2A;}
+.firebrick{color:#B22222;}
+.gray{color:#808080;}
+.grey{color:#808080;}
+.green{color:#008000;}
+.lime{color:#00FF00;}
+.limebreen{color:#32CD32;}
+.maroon	#800000;}
+.midnightblue{color:#191970;}
+.navy{color:#000080;}
+.olive{color:#808000;}
+.orange	#FFA500;}
+.pink{color:#FFC0CB;}
+.purple{color:#800080;}
+.red{color:#FF0000;}
+.silver{color:#C0C0C0;}
+.white{color:#FFFFFF;}
+.yellow{color:#FFFF00;}
+</style>
+</head> 
+<body>
+<div id="a" class="fl">a</div>
+<div id="b" class="fl">b</div>
+<div id="c" class="fl c">c
+<div class="stuck">stuck</div>
+</div>
+<div id="d" class="fl">d</div>
+<div id="e" class="fl">e</div>
+</body>
+</html>
