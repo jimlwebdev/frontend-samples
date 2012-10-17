@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>rotate</title> 
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+$(function(){
+});
+</script>
+<style>
+.ib{/*display:inline-block;*/}
+.b1{border:1px solid #000;}
+.left{float:left;}
+.right{float:right;}
+div.pr{position:relative;height:250px;width:88px;}
+span{position:absolute;-webkit-transform:rotate(-90deg);bottom:35px;left:-32px;width:88px;height:19px;}
+</style>
+</head> 
+<body>
+<div class="left b1">
+ <div class="pr">
+  <span>rotate this text</span>
+ </div>
+</div>
+<div class="right b1">div 2</div>
+</body>
+</html>
+<!--
+*{margin:0;padding:0;}
+div{height:500px;}
+body{background:#000 url('http://www.themedicalbuzz.com/images/site/rss_vertical_names.png') 0 bottom repeat-x;}
+-->
