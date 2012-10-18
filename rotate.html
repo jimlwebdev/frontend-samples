@@ -1,31 +1,59 @@
 <!DOCTYPE html> 
 <html>
 <head>
-<title>rotate</title> 
+<title>rotate</title>
+<style>
+.hide{display:none;}
+div.vertical{height:250px;width:25px;position:relative;border:1px solid #ff0000;background:#008000;}
+div.vertical ul.bottom{position:absolute;bottom:0;list-style-type:none;margin:0 0 6px 6px;padding:0;}
+div.vertical ul.bottom li{-webkit-transform:rotate(-90deg);margin:-5px 0;padding:0;}
+</style>
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script>
 $(function(){
+/*
+ var horizontal = $('.horizontal').html().split("").reverse().join("");
+ $.each(horizontal,function(i,v){
+  $('.bottom').append($('<li>').html(v));
+ })
+*/
+ var horizontal = $('.horizontal').html();
+ var bottom = $('<ul>',{'class':'bottom'});
+ $.each(horizontal,function(i,v){
+  $('<li>').html(v).prependTo(bottom);
+ })
+ $('.vertical').append(bottom);
 });
 </script>
-<style>
+</head> 
+<body>
+<div class="horizontal hide">abcdefghijkl</div>
+<div class="vertical"></div>
+</body>
+</html>
+<!--
+<ul class="bottom">
+</ul>
+ <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li><li>g</li><li>h</li><li>i</li><li>j</li>
+<li>k</li><li>l</li><li>m</li><li>n</li><li>o</li><li>p</li><li>q</li><li>r</li><li>s</li><li>t</li>
+<li>u</li><li>v</li><li>w</li><li>x</li><li>y</li><li>z</li>
+
+
 .ib{/*display:inline-block;*/}
 .b1{border:1px solid #000;}
 .left{float:left;}
 .right{float:right;}
 div.pr{position:relative;height:250px;width:88px;}
-span{position:absolute;-webkit-transform:rotate(-90deg);bottom:35px;left:-32px;width:88px;height:19px;}
-</style>
-</head> 
-<body>
+p{position:absolute;-webkit-transform:rotate(-90deg);bottom:35px;left:-32px;width:88px;height:19px;}
 <div class="left b1">
  <div class="pr">
-  <span>rotate this text</span>
+  <p>rotate this text</p>
  </div>
 </div>
 <div class="right b1">div 2</div>
-</body>
-</html>
-<!--
+
+
+
 *{margin:0;padding:0;}
 div{height:500px;}
 body{background:#000 url('http://www.themedicalbuzz.com/images/site/rss_vertical_names.png') 0 bottom repeat-x;}
