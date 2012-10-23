@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>pdone</title>
+<meta charset="utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script>
+$(function(){
+ //alert($('.outside').)
+ var nothing;
+});
+</script>
+<style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body{margin:auto;padding:0;text-align:center;}
+div{margin:auto;padding:0;text-align:center;}
+
+div.main{width:700px;}
+
+div.leftside{float:left;}
+
+div.header{width:400px;height:100px;}
+div.content{width:400px;height:500px;}
+
+div.links{width:276px;height:45px;position:absolute;top:50px;left:259px;}
+div.outside{border:1px solid #000;border-radius:10px;padding:2px;}
+div.inside{border:1px solid #000;border-radius:10px;background:#808080;}
+
+div.rightside{float:right;width:250px;height:550px;}
+
+ul{list-style-type:none;} div.links li{float:left;padding:10px;}
+.clearB{clear:both;}
+</style>
+</head>
+<body>
+ <div class="main">
+  <div class="leftside">
+   <div class="header">
+header<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz
+   </div><!-- header -->
+
+ <div class="links">
+  <div class="outside">
+   <div class="inside">
+    <ul>
+     <li>abcdefg</li><li>hijklm</li><li>nopqrs</li><li>tuvwxyz</li><div class="clearB"></div>
+    </ul>
+   </div><!-- inside -->
+  </div><!-- outside -->
+ </div><!-- links -->
+
+   <div class="content">
+content<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz
+   </div><!-- content -->
+  </div><!-- leftside -->
+
+  <div class="rightside">
+rightside<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz<br/>abcdefghijklmnopqrstuvwxyz
+  </div><!-- rightside -->
+
+  <div class="clearB"></div>
+
+ </div><!-- main -->
+</body>
+</html>
+<!-- abcdefghijklmnopqrstuvwxyz -->
